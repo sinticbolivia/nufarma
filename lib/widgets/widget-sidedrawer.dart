@@ -84,6 +84,10 @@ class WidgetSideDrawerState extends State<WidgetSideDrawer>
 											child: Text('Editar',
 													style: TextStyle(color: colors.mainColors['secondary'], fontWeight: FontWeight.bold)
 											),
+											onTap: ()
+											{
+												Navigator.of(context).pushNamed('/account');
+											},
 										)
 									]
 							)
