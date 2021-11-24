@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 int primaryColorInt = 0xff2f3cb5; //blue
 int secondaryColorInt = 0xfffe8b0d; //orange
+int secondaryButtonColorInt = 0xff00d787;
 
 final mainColors = {
 	'blue':			Color(0xff001647),//Color(0xff0079ff),
@@ -18,7 +19,8 @@ final mainColors = {
 	'secondary': Color(secondaryColorInt),
 	'price': Color(0xff0071df),
 	'categoryTextColor': Color(0xffa9a9a9),
-	'productTextColor': Color(0xff575757)
+	'productTextColor': Color(0xff575757),
+	'btn_secondary': Color(secondaryButtonColorInt),
 };
 
 var primaryColor = MaterialColor(primaryColorInt,

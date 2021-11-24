@@ -10,3 +10,12 @@ final buttonPrimary = ButtonStyle(
         )
     )
 );
+final buttonSecondary = ButtonStyle(
+    backgroundColor: MaterialStateProperty.all(colors.mainColors['btn_secondary']),
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6.0),
+            side: BorderSide(color: colors.mainColors['btn_secondary'])
+        )
+    )
+);

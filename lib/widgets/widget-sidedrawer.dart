@@ -14,7 +14,7 @@ class WidgetSideDrawerState extends State<WidgetSideDrawer>
 		{'label': 'Mi carrito', 'icon': Icon(Icons.shopping_cart_outlined, color: Colors.white,), 'route': '/cart', 'protected': !true},
 		{'label': 'Alarmas', 'icon': Icon(Icons.alarm, color: Colors.white,), 'route': '/alarms', 'protected': !true},
 		{'label': 'Sucursales', 'icon': Icon(Icons.shop_outlined, color: Colors.white,), 'route': '/stores', 'protected': !true},
-		{'label': 'Historial', 'icon': Icon(Icons.search_outlined, color: Colors.white,), 'route': '/history', 'protected': !true},
+		{'label': 'Historial', 'icon': Icon(Icons.search_outlined, color: Colors.white,), 'route': '/orders', 'protected': !true},
 		{'label': 'Ayuda', 'icon': Icon(Icons.help_outline, color: Colors.white,), 'route': '/help', 'protected': !true},
   ];
 	Function			t;

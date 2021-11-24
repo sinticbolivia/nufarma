@@ -20,6 +20,8 @@ import 'pages/checkout/shipping.dart';
 import 'pages/checkout/billing.dart';
 import 'pages/checkout/payment.dart';
 import 'pages/checkout/order-summary.dart';
+import 'pages/users/orders-history.dart';
+
 
 final appRoutes = <String, WidgetBuilder>{
 	'/': (BuildContext context) => Home(),
@@ -34,7 +36,7 @@ final appRoutes = <String, WidgetBuilder>{
 	'/checkout/billing': (BuildContext context) => Billing(),
 	'/checkout/payment': (BuildContext context) => Payment(),
 	'/checkout/summary': (BuildContext context) => OrderSummary(),
-	//'/orders': (BuildContext context) => Orders(),
+	'/orders': (BuildContext context) => OrdersHistory(),
 	'/account': (BuildContext context) => Account(),
 	'/categories': (BuildContext context) => Categories(),
 	'/help': (BuildContext context) => Help(),
