@@ -4,12 +4,19 @@ import '../colors.dart' as colors;
 
 class NewAddress extends StatefulWidget
 {
+  final String type;
+  NewAddress({this.type = 'address'})
+  {
+
+  }
+
   @override
   _NewAddressState  createState() => _NewAddressState();
 }
 
 class _NewAddressState extends State<NewAddress>
 {
+  String    type;
   int _currentStateId;
   int _currentCityId;
   int _currentCountryId;
@@ -23,17 +30,26 @@ class _NewAddressState extends State<NewAddress>
   @override
   void initState()
   {
+    this.type = this.widget.type;
     super.initState();
     this._currentStateId = 1;
     this._currentCityId = 1;
     this._currentCountryId = 1;
+
   }
   @override
   Widget build(BuildContext context)
   {
+    var data = ModalRoute.of(this.context)?.settings.arguments as Map;
+
+    if( data != null )
+    {
+      this.type = data.containsKey('type') ? data['type'] : this.type;
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Nueva dirección'),
+        title: this.type == 'address' ? Text('Nueva dirección') : Text('Nueva dirección facturación'),
         actions: [],
       ),
       body: Container(
@@ -48,6 +64,50 @@ class _NewAddressState extends State<NewAddress>
                 child: ListView(
                 shrinkWrap: true,
                     children: [
+                      if( this.type == 'invoice' )
+                        TextFormField(
+                          decoration: this._inputDecoration().copyWith(
+                              labelText: 'Razon Social'
+                          ),
+                          controller: this._ctrlStreet,
+                          validator: (str)
+                          {
+                            if( str.isEmpty )
+                              return 'Razon Social invalida';
+                          },
+                        ),
+                      if( this.type == 'invoice' )
+                        Row(
+                          children: [
+                            Expanded(
+                                child: TextFormField(
+                                  decoration: this._inputDecoration().copyWith(
+                                      labelText: 'RFC'
+                                  ),
+                                  controller: this._ctrlNroExt,
+                                  validator: (str)
+                                  {
+                                    if( str.isEmpty )
+                                      return 'RFC invalido';
+                                  },
+                                )
+                            ),
+                            SizedBox(width: 10),
+                            Expanded(
+                                child: TextFormField(
+                                  decoration: this._inputDecoration().copyWith(
+                                      labelText: 'Tipo de persona'
+                                  ),
+                                  controller: this._ctrlNroInt,
+                                  validator: (str)
+                                  {
+                                    if( str.isEmpty )
+                                      return 'Tipo de persona invalido';
+                                  },
+                                )
+                            )
+                          ]
+                        ),
                       TextFormField(
                         decoration: this._inputDecoration().copyWith(
                             labelText: 'Calle'
@@ -147,6 +207,7 @@ class _NewAddressState extends State<NewAddress>
                         },
                       ),
                       SizedBox(height: 10),
+                      if( this.type == 'address' )
                       TextFormField(
                         decoration: this._inputDecoration().copyWith(
                             labelText: 'Agregar indicaciones (Entre calles, entrega en recepción, etc)'

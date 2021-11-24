@@ -16,6 +16,10 @@ import 'pages/categories.dart';
 import 'pages/help.dart';
 import 'pages/alarms/listing.dart';
 import 'pages/alarms/new-alarm.dart';
+import 'pages/checkout/shipping.dart';
+import 'pages/checkout/billing.dart';
+import 'pages/checkout/payment.dart';
+import 'pages/checkout/order-summary.dart';
 
 final appRoutes = <String, WidgetBuilder>{
 	'/': (BuildContext context) => Home(),
@@ -26,6 +30,10 @@ final appRoutes = <String, WidgetBuilder>{
 	'/cart': (BuildContext context) => Cart(),
 	'/checkout/address': (BuildContext context) => Address(),
 	'/new-address': (BuildContext context) => NewAddress(),
+	'/checkout/shipping': (BuildContext context) => Shipping(),
+	'/checkout/billing': (BuildContext context) => Billing(),
+	'/checkout/payment': (BuildContext context) => Payment(),
+	'/checkout/summary': (BuildContext context) => OrderSummary(),
 	//'/orders': (BuildContext context) => Orders(),
 	'/account': (BuildContext context) => Account(),
 	'/categories': (BuildContext context) => Categories(),

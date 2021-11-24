@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nufarma/classes/MB_Address.dart';
+import 'package:nufarma/widgets/widget-bottom-menu.dart';
 import '../../widgets/checkout/steps.dart';
 import '../../colors.dart' as colors;
+import '../../styles.dart' as styles;
+import '../../widgets/widget-btn-add-more.dart';
 
 class Address extends StatefulWidget
 {
@@ -20,10 +23,12 @@ class _AddressState extends State<Address>
   @override
   Widget build(BuildContext context)
   {
+    //print('address.build');
     return Scaffold(
       appBar: AppBar(
         title: Text('Dirección')
       ),
+      bottomNavigationBar: WidgetBottomMenu(),
       body: Container(
         color: Colors.white,
         child: Column(
@@ -32,38 +37,39 @@ class _AddressState extends State<Address>
             Steps(step: 0,),
             SizedBox(height: 8),
             this._currentAddress(),
-            ListView(
-              shrinkWrap: true,
-              children: [
-                Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
+            Expanded(
+              child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                        ),
+                        child: this._getAddresses()
                     ),
-                    child: this._getAddresses()
-                ),
-                SizedBox(height: 10),
-                InkWell(
-                  child: Column(
-                    children: [
-                      Icon(
-                          Icons.add_circle_outline_outlined,
-                          size: 40,
-                          color: colors.mainColors['price']
-                      ),
-                      SizedBox(height: 10),
-                      Text('Agregar nueva dirección',
-                          style: TextStyle(color: colors.mainColors['price'], fontSize: 17)
-                      )
-                    ],
-                  ),
-                  onTap: ()
-                  {
-                    Navigator.of(this.context).pushNamed('/new-address');
-                  },
-                )
-              ]
+                    SizedBox(height: 10),
+                    WidgetButtonAddMore(
+                      text: 'Agregar nueva dirección',
+                      onTap: ()
+                      {
+                        Navigator.of(this.context).pushNamed('/new-address');
+                      },
+                    )
+                  ]
+              )
             ),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: TextButton(
+                style: styles.buttonPrimary,
+                child: Text('Continuar', style: TextStyle(color: Colors.white)),
+                onPressed: ()
+                {
+                  Navigator.of(context).pushNamed('/checkout/shipping');
+                },
+              )
+            )
           ]
         )
       ),

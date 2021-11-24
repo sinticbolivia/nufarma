@@ -23,6 +23,7 @@ class _ProductState extends State<Product>
   int productQty = 1;
   MB_Cart         cart = MB_Cart();
   OverlayEntry overlayNotify;
+  Timer notifyTimer;
 
   @override
   void initState()
@@ -151,7 +152,7 @@ class _ProductState extends State<Product>
                         child: TextButton(
                           onPressed: ()
                           {
-                            this.overlayNotify.remove();
+                            this.removeNotify();
                             Navigator.of(this.context).pushNamed('/cart');
                           },
                           child: Text('Procesar pago', style: TextStyle(color: Colors.white)),
@@ -171,8 +172,7 @@ class _ProductState extends State<Product>
                     ],
                     onClose: ()
                     {
-                      if( this.overlayNotify != null )
-                        this.overlayNotify.remove();
+                      this.removeNotify();
                     },
                   )
               ),
@@ -181,10 +181,25 @@ class _ProductState extends State<Product>
       }
     );
     Overlay.of(this.context).insert(this.overlayNotify);
-    var timer = Timer(Duration(seconds: 5), ()
+    this.notifyTimer = Timer(Duration(seconds: 5), ()
     {
-      if( this.overlayNotify != null )
-        this.overlayNotify.remove();
+      this.removeNotify();
     });
+  }
+  void removeNotify()
+  {
+    if( this.notifyTimer != null )
+      this.notifyTimer.cancel();
+    if( this.overlayNotify != null )
+    {
+      this.overlayNotify.remove();
+      this.overlayNotify = null;
+    }
+  }
+  @override
+  void dispose()
+  {
+    this.removeNotify();
+    super.dispose();
   }
 }
