@@ -14,6 +14,8 @@ import 'pages/login.dart';
 import 'pages/users/account.dart';
 import 'pages/categories.dart';
 import 'pages/help.dart';
+import 'pages/alarms/listing.dart';
+import 'pages/alarms/new-alarm.dart';
 
 final appRoutes = <String, WidgetBuilder>{
 	'/': (BuildContext context) => Home(),
@@ -28,4 +30,6 @@ final appRoutes = <String, WidgetBuilder>{
 	'/account': (BuildContext context) => Account(),
 	'/categories': (BuildContext context) => Categories(),
 	'/help': (BuildContext context) => Help(),
+	'/alarms': (BuildContext context) => Alarms(),
+	'/alarms/new': (BuildContext context) => NewAlarm(),
 };

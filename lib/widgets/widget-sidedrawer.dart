@@ -11,7 +11,7 @@ class WidgetSideDrawerState extends State<WidgetSideDrawer>
 	List		_items = <Map>[
 		{'label': 'Productos', 'icon': Icon(Icons.inbox_sharp, color: Colors.white,), 'route': '/products', 'protected': !true},
 		{'label': 'Categorias', 'icon': Icon(Icons.list_outlined, color: Colors.white,), 'route': '/categories', 'protected': !true},
-		{'label': 'Mi carrito', 'icon': Icon(Icons.shopping_cart_outlined, color: Colors.white,), 'route': '/shopping-cart', 'protected': !true},
+		{'label': 'Mi carrito', 'icon': Icon(Icons.shopping_cart_outlined, color: Colors.white,), 'route': '/cart', 'protected': !true},
 		{'label': 'Alarmas', 'icon': Icon(Icons.alarm, color: Colors.white,), 'route': '/alarms', 'protected': !true},
 		{'label': 'Sucursales', 'icon': Icon(Icons.shop_outlined, color: Colors.white,), 'route': '/stores', 'protected': !true},
 		{'label': 'Historial', 'icon': Icon(Icons.search_outlined, color: Colors.white,), 'route': '/history', 'protected': !true},
